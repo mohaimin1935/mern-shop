@@ -1,15 +1,15 @@
 import express from "express"
-import CryptoJS from "crypto-js"
-import { verifyTokenAndAdmin, verifyTokenAndAuthorization } from "../middlewares/verifyToken"
+import { verifyTokenAndAdmin } from "../middlewares/verifyToken"
 import Product from "../models/Product"
 
 const router = express.Router()
 
 // CREATE PRODUCT
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
+  const newProduct = new Product(req.body)
   try {
-    const newProduct = await Product.create(req.body)
-    res.status(200).json(newProduct)
+    const savedProduct = await newProduct.save()
+    res.status(200).json(savedProduct)
   } catch (error) {
     res.status(500).json(error)
   }
