@@ -1,16 +1,118 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --secondary: #153A5B;
+  --primary: #F3756D;
+  --light: #F5F9FC;
+  --dark: #9BACBB;
+  --white: #fff;
+  --black: #000;
+  --sm-nav-height: 64px;
+  --lg-nav-height: 64px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
 * {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 1200px) {
+  .container {
+      padding: 0 20px;
+  }
+}
+
+.dark-bg {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+.blue-text {
+  color: var(--secondary);
+}
+
+.hover-line {
+  position: relative;
+}
+
+.hover-line::before {
+  content: '';
+  position: absolute;
+  background-color: var(--light);
+  height: .6px;
+  width: 0%;
+  bottom: 0px;
+  left: 0;
+  transition: .2s ease;
+}
+
+.hover-line:hover::before {
+  width: 100%;
+}
+
+.hide-navbar {
+  position: fixed;
+  height: var(--sm-nav-height);
+  top: var(--sm-nav-height);
+  left: 0;
+  width: 100%;
+  transition: 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.show-navbar {
+  background: var(--white);
+  position: fixed;
+  z-index: 100;
+  height: var(--sm-nav-height);
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.show-mobile-menu {
+  position: fixed;
+  left: 0;
+  top: var(--sm-nav-height);
+  width: 100%;
+  transition: left 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.hide-mobile-menu {
+  position: fixed;
+  left: -100%;
+  top: var(--sm-nav-height);
+  width: 100%;
+  transition: left 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .show-navbar, .hide-navbar {
+    height: var(--lg-nav-height);
+  }
+  .hide-navbar {top: -80px;}
+  .show-mobile-menu, .hide-mobile-menu {
+    top: var(--lg-nav-height);
+  }
 }
