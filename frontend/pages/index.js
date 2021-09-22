@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import SectionTitle from '../components/common/SectionTitle'
 import Hero from '../components/home/Hero'
+import ProductList from '../components/products/ProductList'
 
 
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
         <SectionTitle>
           Trending Now
         </SectionTitle>
-        
+        <ProductList />
 
       </main>
     </div>

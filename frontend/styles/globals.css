@@ -50,8 +50,17 @@ body {
   color: var(--black);
 }
 
+.hovered-bg {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
 .primary-bg {
   background-color: var(--primary);
+}
+
+.primary-text {
+  color: var(--primary);
 }
 
 .blue-text {
