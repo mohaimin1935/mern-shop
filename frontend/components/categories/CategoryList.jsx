@@ -5,7 +5,7 @@ const CategoryList = () => {
   return (
     <div className="container">
       <div className='flex flex-wrap items-center justify-center m-8 mb-24'>
-        {categories.map(category => <SingleCategory category={category} />)}
+        {categories.map(category => <SingleCategory key={category.id} category={category} />)}
       </div>
     </div>
   )

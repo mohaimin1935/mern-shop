@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { BiMenu } from 'react-icons/bi'
 import { IoMdClose } from 'react-icons/io'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const Navbar = () => {
 
@@ -37,7 +38,7 @@ const Navbar = () => {
           {/* logo */}
           <h3 className="text-lg sm:text-xl font-semibold">
             <Link href="/" className='hover-line'>
-              <a>App</a>
+              <a>Clumsy Clothes</a>
             </Link>
           </h3>
 
@@ -79,8 +80,16 @@ const NavLinks = () => (
   <>
     {links.map(link => (
       <li key={link.to}>
-        <Link href={"/"} className="hover-line">
-          {link.name}
+        <Link href={`${link.to}`}>
+          <a>
+            {link.name !== "Cart" && link.name}
+            {link.name === "Cart" && (
+              <div className="relative">
+                <AiOutlineShoppingCart size={24} />
+                <span className="absolute -right-2 -top-1 w-4 h-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">4</span>
+              </div>
+            )}
+          </a>
         </Link>
       </li>
     ))}
@@ -89,13 +98,21 @@ const NavLinks = () => (
 
 const links = [
   {
-    name: "Home",
-    to: "/",
+    name: "Shop",
+    to: "/products"
   },
   {
-    name: "About",
-    to: "/about"
-  }
+    name: "Register",
+    to: "/register"
+  },
+  {
+    name: "Log in",
+    to: "/signin"
+  },
+  {
+    name: "Cart",
+    to: "/cart"
+  },
 ]
 
 export default Navbar

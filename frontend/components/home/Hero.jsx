@@ -16,7 +16,7 @@ const Hero = () => {
             Clumsy Clothes
           </h1>
           <p className="text-xl md:text-xl lg:text-2xl mb-6">Exclusive products for summer sale!</p>
-          <Button href="/" className='text-lg font-semibold'>
+          <Button href="/products" className='text-lg font-semibold'>
             Shop Now
           </Button>
         </div>
