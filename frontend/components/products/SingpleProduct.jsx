@@ -10,7 +10,7 @@ const SingpleProduct = ({product}) => {
 
   return (
     <div
-      className={"w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 h-full mb-4 duration-300 group"}
+      className={"w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 h-full mb-4 duration-300 group"}
       onMouseEnter={() => setHoverd(true)}
       onMouseLeave={() => setHoverd(false)}
     >
