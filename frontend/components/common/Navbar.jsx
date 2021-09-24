@@ -107,7 +107,7 @@ const links = [
   },
   {
     name: "Log in",
-    to: "/signin"
+    to: "/login"
   },
   {
     name: "Cart",

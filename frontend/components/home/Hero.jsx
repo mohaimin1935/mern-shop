@@ -11,7 +11,7 @@ const Hero = () => {
           className="object-cover h-full absolute lg:relative opacity-70 md:opacity-100 left-0"
           alt="Shop"
         />
-        <div className="flex flex-col items-center text-center px-8 py-6 rounded-lg z-50 ml-0 md:ml-72 lg:ml-0" >
+        <div className="flex flex-col items-center text-center px-8 py-6 rounded-lg z-10 ml-0 md:ml-72 lg:ml-0" >
           <h1 className="text-5xl lg:text-5xl xl:text-6xl font-bold mb-3">
             Clumsy Clothes
           </h1>
