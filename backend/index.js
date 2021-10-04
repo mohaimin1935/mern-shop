@@ -1,11 +1,12 @@
-import express from "express"
+import cors from "cors"
 import dotenv from "dotenv"
+import express from "express"
 import mongoose from "mongoose"
-import userRoute from "./routes/user"
 import authRoute from "./routes/auth"
-import productRoute from "./routes/product"
 import cartRoute from "./routes/cart"
 import orderRoute from "./routes/order"
+import productRoute from "./routes/product"
+import userRoute from "./routes/user"
 
 const app = express()
 
@@ -17,6 +18,7 @@ mongoose
   .catch(e => console.log(e))
 
 app.use(express.json())
+app.use(cors())
 app.use("/api/auth", authRoute)
 app.use("/api/users", userRoute)
 app.use("/api/products", productRoute)

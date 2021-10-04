@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* fonts (poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+/* constants */
+:root {
+  --primary: #fb5d5c;
+  --secondary: #101820;
+  --light: #fff;
+  --dark: #000;
+  --sm-nav-height: 64px;
+  --lg-nav-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+.dark-bg {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+.hover-line {
+  position: relative;
+}
+
+.hover-line::before {
+  content: "";
+  position: absolute;
+  background-color: var(--light);
+  height: 0.6px;
+  width: 0%;
+  bottom: 0px;
+  left: 0;
+  transition: 0.2s ease;
+}
+
+.hover-line:hover::before {
+  width: 100%;
+}
+
+.hide-navbar {
+  position: fixed;
+  height: var(--sm-nav-height);
+  top: var(--sm-nav-height);
+  left: 0;
+  width: 100%;
+  transition: 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.show-navbar {
+  position: fixed;
+  z-index: 100;
+  height: var(--sm-nav-height);
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.show-mobile-menu {
+  position: fixed;
+  left: 0;
+  top: var(--sm-nav-height);
+  width: 100%;
+  transition: left 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+.hide-mobile-menu {
+  position: fixed;
+  left: -100%;
+  top: var(--sm-nav-height);
+  width: 100%;
+  transition: left 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .show-navbar,
+  .hide-navbar {
+    height: var(--lg-nav-height);
+  }
+  .hide-navbar {
+    top: -80px;
+  }
+  .show-mobile-menu,
+  .hide-mobile-menu {
+    top: var(--lg-nav-height);
+  }
+}
