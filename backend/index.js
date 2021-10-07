@@ -2,6 +2,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import path from "path";
 import authRoute from "./routes/auth";
 import cartRoute from "./routes/cart";
 import orderRoute from "./routes/order";
