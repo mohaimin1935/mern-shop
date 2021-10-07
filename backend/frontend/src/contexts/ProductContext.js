@@ -32,7 +32,7 @@ export const ProductProvider = ({ children }) => {
       const categorySet = new Set();
       let min = products[0].price,
         max = products[0].price;
-      products.forEach((product) => {
+      products?.forEach((product) => {
         product.color?.forEach((c) => colorSet.add(c));
         product.size?.forEach((s) => sizeSet.add(s));
         product.categories?.forEach((cat) => categorySet.add(cat));
