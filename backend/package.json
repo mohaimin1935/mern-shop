@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r esm index.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm indtall && npm run build"
   },
   "keywords": [],
   "author": "",
