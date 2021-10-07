@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/";
+const BASE_URL = "https://mern-shop-35.herokuapp.com/";
 const TOKEN = JSON.parse(localStorage.getItem("currentUser"))?.accessToken || "";
 
 export const publicRequest = axios.create({
