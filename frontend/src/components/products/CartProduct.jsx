@@ -1,12 +1,29 @@
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { useCart } from "../../contexts/CartContext";
 
-const CartProduct = ({ item }) => {
+const CartProduct = ({ item, index }) => {
   const { product, quantity, size, color } = item;
 
-  console.log(product.img);
+  const { removeFromCart, updateCartItem } = useCart();
+
+  const handleQuantity = (type) => {
+    if (type === "inc") {
+      updateCartItem(index, quantity + 1);
+    } else if (type === "dec" && quantity > 1) {
+      updateCartItem(index, quantity - 1);
+    }
+  };
 
   return (
     <div className="relative flex items-center light-bg px-2 py-2 mb-2 border-b-2 gap-4">
+      <button
+        className="absolute top-0 right-2 text-red-400 p-1 cursor-pointer z-10"
+        onClick={() => removeFromCart(index)}
+      >
+        <AiOutlineCloseCircle size={20} />
+      </button>
+
       <img
         className="w-28 bg-purple-50"
         alt="cart product"
@@ -35,14 +52,14 @@ const CartProduct = ({ item }) => {
 
         <div className="flex flex-row sm:flex-col items-center my-auto gap-2">
           <div className="flex items-center">
-            <button>
-              <BiPlus size={24} />
+            <button onClick={() => handleQuantity("dec")}>
+              <BiMinus size={24} />
             </button>
             <div className="w-8 h-8 border-2 flex justify-center items-center rounded">
               {quantity}
             </div>
-            <button>
-              <BiMinus size={24} />
+            <button onClick={() => handleQuantity("inc")}>
+              <BiPlus size={24} />
             </button>
           </div>
           <div className="text-xl">

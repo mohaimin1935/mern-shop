@@ -5,7 +5,7 @@ const SingleCategory = ({ category }) => {
 
   return (
     <Link
-      to={`/products?category=${category.title}`}
+      to={`/products?cat=${category.title.toLowerCase()}`}
       className="w-full sm:w-1/2 lg:w-1/3 px-4 h-full mb-4 duration-300 cursor-pointer"
     >
       <div

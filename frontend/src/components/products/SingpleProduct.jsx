@@ -1,4 +1,4 @@
-import { AiOutlineHeart, AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineShopping } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
 
@@ -18,19 +18,19 @@ const SingpleProduct = ({ product }) => {
         }
       >
         <div className="absolute inset-0 bg-transparent group-hover:bg-black group-hover:bg-opacity-40 duration-300">
-          <div className="opacity-0 h-full group-hover:opacity-100 text-4xl text-white duration-300">
+          <div className="opacity-0 h-full group-hover:opacity-50 text-4xl text-white duration-300">
             <div className="flex w-full h-full items-center justify-center gap-3">
               {/* <div className="p-2 cursor-pointer">
                 <AiOutlineShoppingCart />
               </div> */}
-              <div className="p-2 cursor-pointer">
+              {/* <div className="p-2 cursor-pointer">
                 <AiOutlineHeart />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
-        <img src={img} alt="Product" />
+        <img src={img} alt="Product" className="hover:scale-125" />
       </div>
 
       <div className="my-4">

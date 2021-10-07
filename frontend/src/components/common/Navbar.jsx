@@ -3,6 +3,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { BiMenu } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 
 const Navbar = () => {
@@ -42,7 +43,7 @@ const Navbar = () => {
           {/* logo */}
           <h3 className="text-lg sm:text-xl font-semibold">
             <Link to="/" className="hover-line">
-              App
+              Clumsy Clothes
             </Link>
           </h3>
 
@@ -81,34 +82,42 @@ const Navbar = () => {
 
 const NavLinks = () => {
   const { cartItems } = useCart();
+  const { currentUser, logout } = useAuth();
 
   return (
     <>
-      {links.map((link) => (
-        <li key={link.to}>
-          <Link to={link.to} className="hover-line">
-            {link.name}
-          </Link>
-        </li>
-      ))}
-      <Link to="/cart" className="relative">
-        <div
-          className="absolute bg-red-500 text-white w-4 h-4 rounded-full flex items-center justify-center -top-1 -right-1.5"
-          style={{ fontSize: 10 }}
-        >
-          {cartItems?.length}
+      {currentUser
+        ? userLinks.map((link) => (
+            <li key={link.to}>
+              <Link to={link.to} className="hover-line">
+                {link.name}
+              </Link>
+            </li>
+          ))
+        : publicLinks.map((link) => (
+            <li key={link.to}>
+              <Link to={link.to} className="hover-line">
+                {link.name}
+              </Link>
+            </li>
+          ))}
+      {currentUser && <button onClick={logout}>Log out</button>}
+      <Link to="/cart">
+        <div className="relative inline-block">
+          <div
+            className="absolute bg-red-500 text-white w-4 h-4 rounded-full flex items-center justify-center -top-1 -right-1.5"
+            style={{ fontSize: 10 }}
+          >
+            {cartItems?.length}
+          </div>
+          <AiOutlineShopping size={24} />
         </div>
-        <AiOutlineShopping size={24} />
       </Link>
     </>
   );
 };
 
-const links = [
-  {
-    name: "Home",
-    to: "/",
-  },
+const publicLinks = [
   {
     name: "Login",
     to: "/login",
@@ -116,6 +125,17 @@ const links = [
   {
     name: "Register",
     to: "/register",
+  },
+  {
+    name: "Shop",
+    to: "/products",
+  },
+];
+
+const userLinks = [
+  {
+    name: "Home",
+    to: "/",
   },
   {
     name: "Shop",
