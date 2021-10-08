@@ -14,14 +14,14 @@ export const ProductProvider = ({ children }) => {
   const [availableCategories, setAvilableCategories] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 100]);
 
-  const fetchProducts = async () => {
-    setProductsLoading(true);
-    const res = await publicRequest.get("/products");
-    setProducts(res.data);
-    setProductsLoading(false);
-  };
-
   useEffect(() => {
+    const fetchProducts = async () => {
+      setProductsLoading(true);
+      const res = await publicRequest.get("/products");
+      setProducts(res.data);
+      setProductsLoading(false);
+    };
+    
     fetchProducts();
   }, []);
 
