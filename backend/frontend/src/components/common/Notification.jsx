@@ -3,7 +3,6 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const Notification = () => {
   const { notification, setNotification } = useAuth();
-  console.log(notification);
 
   if (notification === "close") return <></>;
   else

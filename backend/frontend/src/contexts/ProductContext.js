@@ -26,7 +26,7 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (products[0]) {
+    if (products && products?.length > 0) {
       const colorSet = new Set();
       const sizeSet = new Set();
       const categorySet = new Set();
