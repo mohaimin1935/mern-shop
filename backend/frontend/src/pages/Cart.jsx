@@ -11,7 +11,7 @@ const STRPIE_KEY =
   "pk_test_51JaK2vEjt4WAgsTc8fC6RCemczKFhdt3PDJ0ved7kwaxwLUh8crFaLy5nanPte2nbwucwC3AkEfixSFVIuGaxddK00HxsiR7nN";
 
 const Cart = () => {
-  const { cartItems, totalPrice } = useCart();
+  const { cartItems, totalPrice, emptyCart } = useCart();
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -28,7 +28,7 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        console.log(res);
+        emptyCart();
         history.push("/success");
       } catch (error) {
         console.log(error);
@@ -68,7 +68,7 @@ const Cart = () => {
                 image="https://png.pngtree.com/png-clipart/20190516/original/pngtree-vector-shop-icon-png-image_3762863.jpg"
                 billingAddress
                 shippingAddress
-                description={`Your total is $${totalPrice}`}
+                description={`Your total is $${totalPrice + 5}`}
                 amount={totalPrice * 100}
                 token={onToken}
                 stripeKey={STRPIE_KEY}

@@ -40,6 +40,10 @@ export const CartProvider = ({ children }) => {
     }))
   }
 
+  const emptyCart = () => {
+    setCartItems([])
+  }
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     let total = 0
@@ -55,6 +59,7 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateCartItem,
     totalPrice,
+    emptyCart,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
